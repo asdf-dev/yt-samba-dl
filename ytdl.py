@@ -11,11 +11,12 @@ ydl_opts = {
     }],
 }
 
-path = '/home/krois/Desktop/'
+
 
 
 if __name__ == "__main__":
+    print(sys.argv[1])
+    os.chdir(sys.argv[1])
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        os.chdir(path)
-        filenames = sys.argv[1:]
+        filenames = sys.argv[2:]
         ydl.download(filenames)
