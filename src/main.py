@@ -7,17 +7,20 @@ from cutter import cutter
 #change this to hardcode path
 pathToDir = "/home/hdd/sambashare/music"
 
+
 def main():
+
+   os.chdir(pathToDir)
+   isExist = os.path.exists("temp")
+   if not (isExist):
+       os.mkdir("temp")
+    
+   os.chdir("temp")
+
    sourceOfDownload = sys.argv[1:]
 
    for x in sourceOfDownload:
 
-    os.chdir(pathToDir)
-    isExist = os.path.exists("temp")
-    if not (isExist):
-        os.mkdir("temp")
-
-    os.chdir("temp")
     print("Downloading: {}".format(x))
     
     ytdl.doDownload(x)
