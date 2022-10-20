@@ -5,20 +5,22 @@ from ytdl import ytdl
 from cutter import cutter
 
 #change this to hardcode path
-pathToDir = "/Users/krois/Source/ytdl"
+pathToDir = "/home/hdd/sambashare/music"
 
 def main():
-    sourceOfDownload = sys.argv[1:]
+   sourceOfDownload = sys.argv[1:]
+
+   for x in sourceOfDownload:
+
     os.chdir(pathToDir)
     isExist = os.path.exists("temp")
     if not (isExist):
         os.mkdir("temp")
 
     os.chdir("temp")
-    print(sourceOfDownload)
-    print("use screen -wipe to close all screen sessions")
-
-    ytdl.doDownload(sourceOfDownload)
+    print("Downloading: {}".format(x))
+    
+    ytdl.doDownload(x)
     
 
     # list to store files
@@ -31,6 +33,8 @@ def main():
             res.append(path)
     
     cutter.splitmp3(res[0])
+
+    print("Download and splitting done enjoy")
         
     
 
